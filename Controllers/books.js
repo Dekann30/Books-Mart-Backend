@@ -12,12 +12,21 @@ const index = async (req,res)=>{
 const create = async (req,res) => {
     try {
         res.json(await Books.create(req.body))
-    }catch (err){
-        res.status(400).json(err)
+    }catch (error){
+        res.status(400).json(error)
+    }
+}
+
+const del = async (req,res) =>{
+    try{
+        res.json(await Books.findByIdAndDelete(req.params.id))
+    } catch(error){
+        res.status(400).json(error)
     }
 }
 
 module.exports = {
     index,
     create,
+    del,
 }

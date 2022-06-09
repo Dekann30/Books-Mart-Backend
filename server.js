@@ -7,6 +7,8 @@ const mongoose = require ('mongoose')
 const cors = require('cors')
 const Books = require('./Models/Books')
 
+const booksRouter = require('./Routes/books')
+
 const app = express()
 
 
@@ -22,6 +24,7 @@ mongoose.connection
 // Middleware
 app.use(cors())
 app.use(express.json())
+app.use('/books', booksRouter)
 // Routes
 
 // CRUD

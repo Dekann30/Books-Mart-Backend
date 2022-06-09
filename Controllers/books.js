@@ -9,14 +9,6 @@ const index = async (req,res)=>{
     }
 }
 
-const create = async (req,res) => {
-    try {
-        res.json(await Books.create(req.body))
-    }catch (error){
-        res.status(400).json(error)
-    }
-}
-
 const del = async (req,res) =>{
     try{
         res.json(await Books.findByIdAndDelete(req.params.id))
@@ -25,8 +17,27 @@ const del = async (req,res) =>{
     }
 }
 
+const update = async (req,res)=>{
+    try{
+        res.json(await Books.findByIdAndUpdate(req.params.id, req.body, {new:true}))
+    }catch(error){
+        res.status(400).json(error)
+    }
+}
+
+const create = async (req,res) => {
+    try {
+        res.json(await Books.create(req.body))
+    }catch (error){
+        res.status(400).json(error)
+    }
+}
+
+
+
 module.exports = {
     index,
     create,
     del,
+    update
 }

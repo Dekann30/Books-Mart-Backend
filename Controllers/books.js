@@ -9,7 +9,15 @@ const index = async (req,res)=>{
     }
 }
 
+const create = async (req,res) => {
+    try {
+        res.json(await Books.create(req.body))
+    }catch (err){
+        res.status(400).json(err)
+    }
+}
 
 module.exports = {
     index,
+    create,
 }

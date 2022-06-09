@@ -5,7 +5,6 @@ const {PORT = 3001, DATABASE_URL} = process.env
 const express = require ('express')
 const mongoose = require ('mongoose')
 const cors = require('cors')
-const Books = require('./Models/Books')
 
 const booksRouter = require('./Routes/books')
 
@@ -31,14 +30,6 @@ app.use('/books', booksRouter)
 
 app.get("/", (req,res)=> {
     res.send("Hello Books")
-})
-
-app.post ("/books/create", async (req,res) => {
-    try {
-        res.json(await Books.create(req.body))
-    }catch (err){
-        res.status(400).json(err)
-    }
 })
 
 

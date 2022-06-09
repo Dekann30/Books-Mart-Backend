@@ -10,6 +10,8 @@ router.put('/:id', booksController.update)
 
 router.post('/', booksController.create)
 
+router.get('/:id', booksController.show)
+
 
 
 
